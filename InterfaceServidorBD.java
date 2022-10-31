@@ -15,4 +15,6 @@ public interface InterfaceServidorBD extends Remote{
     public Smartphone selecciona(int id) throws RemoteException;
     public Vector lista() throws RemoteException;
     public int apaga(int id) throws RemoteException;
+
+   // public int insere(String string, String string0, String string1, String string2, String string3);
 }

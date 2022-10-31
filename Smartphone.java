@@ -21,8 +21,8 @@ public Smartphone(String marca, String modelo, String memoria, String cor){
     this.modelo = modelo;
     this.memoria = memoria;
     this.cor = cor;
-    ID();
-}
+    marcaID();
+}/*
 public String getMarca(){
     return marca;
 }
@@ -46,20 +46,23 @@ public String getCor(){
 }
 public void setCor( String cor){
     this.cor = cor;
-}
-private synchronized int marcaID()
-    {
-    mID=gID++;
+}*/
+private synchronized int marcaID(){
+    mID = gID++;
     return mID;     
-    }
+}
 public boolean temID(int id)
 {
-    return (mID==id);
+    return (mID == id);
 }
 public int ID()
 {
     return mID;
 }
+public String desc()
+    {
+        return "["+mID+"]\t"+marca+"\t"+modelo+"\t"+memoria+"\t"+cor;
+    }
 public static void main (String args[]){
 try{
         InterfaceServidorBD bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/ServidorBD_1");
@@ -67,5 +70,6 @@ try{
 catch (Exception e){
     e.printStackTrace();
 }
+
 }
 }

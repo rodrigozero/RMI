@@ -30,7 +30,7 @@ public class InsereTuplo
     {
         try
         {
-            int id=bd.insere(argv[0], argv[1], argv[2], argv[3], argv[4]);
+            int id = bd.insere(argv[0], argv[1], argv[2], argv[3]);
             System.out.println("Inserido novo tuplo com ID: "+id);
         }
         catch (Exception e)
@@ -42,9 +42,9 @@ public class InsereTuplo
  
     public static void main (String[] argv)
     {
-        if (argv.length!=5)
+        if (argv.length!=4)
         {
-            System.out.println("Sintaxe:\n\tjava InsereTuplo \"nome\" \"sobrenome\" \"telefone\" \"morada\" \"email\"");
+            System.out.println("Sintaxe:\n\tjava InsereTuplo \"Marca\" \"Modelo\" \"Memoria\" \"Cor\"");
             System.exit(0);
         }
         InsereTuplo i = new InsereTuplo();

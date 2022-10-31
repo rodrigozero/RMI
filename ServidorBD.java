@@ -10,7 +10,6 @@ import java.util.Vector;
  *
  * @author rodri
  */
-
 public class ServidorBD extends UnicastRemoteObject implements InterfaceServidorBD
 {
     public ServidorBD() throws RemoteException
@@ -34,8 +33,8 @@ public class ServidorBD extends UnicastRemoteObject implements InterfaceServidor
     {
     	for (int j=0; j < smarts.size(); j++)
     	{
-        	Smartphone t = (Smartphone) smarts.get(j);
-        	if (t.temID(id)) return t; 
+        	Smartphone s = (Smartphone) smarts.get(j);
+        	if (s.temID(id)) return s; 
     	}
     	return (Smartphone) null;
     }
@@ -44,8 +43,8 @@ public class ServidorBD extends UnicastRemoteObject implements InterfaceServidor
     {
     	for (int j=0; j < smarts.size(); j++)
     	{
-        	Smartphone t = (Smartphone) smarts.get(j);
-        	if (t.temID(id)) 
+        	Smartphone s = (Smartphone) smarts.get(j);
+        	if (s.temID(id)) 
         	{
             		smarts.remove(j);
             		return 1;
@@ -55,4 +54,8 @@ public class ServidorBD extends UnicastRemoteObject implements InterfaceServidor
     }
 
     Vector smarts;
+
+    public int insere(String string, String string0, String string1, String string2, String string3) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
