@@ -9,14 +9,14 @@ import java.rmi.*;
  * @author rodri
  */
 
-public class ArrancaServidor
+public class IniciaServidorS
 {
     public static void main(String argv[])
     {
         try
         {
-            System.out.println("Arrancando servidor...");
-            Naming.rebind("ServidorBD_1", new ServidorBD());
+            System.out.println("Servidor On...");
+            Naming.rebind("ServidorBD_s", new ServidorSmartphone());
         }
         catch (Exception e)
         {

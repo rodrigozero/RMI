@@ -10,25 +10,25 @@ import java.util.Vector;
  *
  * @author rodri
  */
-public class ServidorBD extends UnicastRemoteObject implements InterfaceServidorBD
+public class ServidorSmartphone extends UnicastRemoteObject implements InterfaceServidorSmartphone
 {
-    public ServidorBD() throws RemoteException
+    public ServidorSmartphone() throws RemoteException
     {
-        System.out.println("Novo Servidor BD instanciado...");
+        System.out.println("Novo Servidor Smartphone instanciado...");
     	smarts = new Vector();
     }
-    public int insere(String marca, String modelo, String memoria, String cor) throws RemoteException
+    public int insereSmart(String marca, String modelo, String memoria, String cor) throws RemoteException
     {
     	Smartphone s = new Smartphone(marca, modelo, memoria, cor);
    	smarts.add(s);
 	System.out.println("Inserido novo tuplo com ID: "+s.ID());
 	return s.ID();
     }
-    public Vector lista() throws RemoteException
+    public Vector listaSmart() throws RemoteException
     {
     	return smarts;
     }
-    public Smartphone selecciona(int id) throws RemoteException
+    public Smartphone selecionaSmart(int id) throws RemoteException
     {
     	for (int j=0; j < smarts.size(); j++)
     	{
@@ -37,7 +37,7 @@ public class ServidorBD extends UnicastRemoteObject implements InterfaceServidor
     	}
     	return (Smartphone) null;
     }
-    public int apaga(int id) throws RemoteException
+    public int apagaSmart(int id) throws RemoteException
     {
     	for (int j=0; j < smarts.size(); j++)
     	{

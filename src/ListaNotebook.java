@@ -9,16 +9,14 @@ import java.util.Vector;
  *
  * @author rodri
  */
-
-public class ListaTuplos
-{
-    public ListaTuplos()
+public class ListaNotebook{
+    public ListaNotebook()
     {
         System.out.println("Arrancando o Cliente...");
         // Vamos tentar ir aceder ao Servidor de Registos para recolher a interface
         try
         {
-            bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/ServidorBD_1");
+            bdn = (InterfaceServidorNotebook) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
@@ -27,16 +25,15 @@ public class ListaTuplos
             System.exit(0);
         }
     }    
-    public void lista ()
-    {
+    public void listaNote(){
         try
         {
-            Vector tuplos=bd.lista();
-            System.out.println("Tuplos Existentes na Base de Dados: "+tuplos.size());
-            for (int j=0; j < tuplos.size(); j++)
+            Vector itens = bdn.listaNote();
+            System.out.println("Notebooks Existentes na Base de Dados: "+itens.size());
+            for (int j=0; j < itens.size(); j++)
             {
-                Smartphone s = (Smartphone) tuplos.get(j);
-                System.out.println(s.desc());
+                Notebook n = (Notebook) itens.get(j);
+                System.out.println(n.desc());
             }
         }
         catch (Exception e)
@@ -48,9 +45,10 @@ public class ListaTuplos
 
     public static void main (String[] argv)
     {
-        ListaTuplos l = new ListaTuplos();
-        l.lista();
+        ListaNotebook l = new ListaNotebook();
+        l.listaNote();
     }
 
-    private InterfaceServidorBD bd; // A interface para o objecto remoto
+    private InterfaceServidorNotebook bdn; // A interface para o objecto remoto
 }
+

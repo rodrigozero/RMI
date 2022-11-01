@@ -8,15 +8,14 @@ import java.rmi.*;
  *
  * @author rodri
  */
-
-public class ApagaTuplo{
-    public ApagaTuplo()
+public class SelecionaNotebook{
+    public SelecionaNotebook()
     {
         System.out.println("Arrancando o Cliente...");
         // Vamos tentar aceder ao Servidor de Registos para recolher a interface
         try
         {
-            bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/ServidorBD_1");
+            bdn = (InterfaceServidorNotebook) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
@@ -25,13 +24,12 @@ public class ApagaTuplo{
             System.exit(0);
         }
     }    
-    public void apaga (String[] argv)
+    public void selecionaNote (String[] argv)
     {
         try
         {
             int id = Integer.parseInt(argv[0]);
-            bd.apaga(id);
-            System.out.println("Apagado tuplo com ID: "+id);
+            System.out.println(bdn.selecionaNote(id).desc());
         }
         catch (Exception e)
         {
@@ -44,12 +42,12 @@ public class ApagaTuplo{
     {
         if (argv.length!=1)
         {
-            System.out.println("Sintaxe:\n\tjava ApagaTuplo \"id\"");
+            System.out.println("Sintaxe:\n\tjava SelecionaNotebook \"id\"");
             System.exit(0);
         }
-        ApagaTuplo i = new ApagaTuplo();
-        i.apaga(argv);
+        SelecionaNotebook i = new SelecionaNotebook();
+        i.selecionaNote(argv);
     }
 
-    private InterfaceServidorBD bd; // A interface para o objecto remoto
+    private InterfaceServidorNotebook bdn; // A interface para o objecto remoto
 }

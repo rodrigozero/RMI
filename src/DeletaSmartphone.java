@@ -9,14 +9,14 @@ import java.rmi.*;
  * @author rodri
  */
 
-public class InsereTuplo{
-    public InsereTuplo()
+public class DeletaSmartphone{
+    public DeletaSmartphone()
     {
         System.out.println("Arrancando o Cliente...");
         // Vamos tentar aceder ao Servidor de Registos para recolher a interface
         try
         {
-            bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/ServidorBD_1");
+            bds = (InterfaceServidorSmartphone) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
         }
         catch (Exception e)
         {
@@ -25,12 +25,13 @@ public class InsereTuplo{
             System.exit(0);
         }
     }    
-    public void insere (String[] argv)
+    public void apagaSmart (String[] argv)
     {
         try
         {
-            int id = bd.insere(argv[0], argv[1], argv[2], argv[3]);
-            System.out.println("Inserido novo tuplo com ID: "+id);
+            int id = Integer.parseInt(argv[0]);
+            bds.apagaSmart(id);
+            System.out.println("smartphone deletado com ID: "+id);
         }
         catch (Exception e)
         {
@@ -41,14 +42,14 @@ public class InsereTuplo{
  
     public static void main (String[] argv)
     {
-        if (argv.length!=4)
+        if (argv.length!=1)
         {
-            System.out.println("Sintaxe:\n\tjava InsereTuplo \"Marca\" \"Modelo\" \"Memoria\" \"Cor\"");
+            System.out.println("Sintaxe:\n\tjava DeletaSmarphone \"id\"");
             System.exit(0);
         }
-        InsereTuplo i = new InsereTuplo();
-        i.insere(argv);
+        DeletaSmartphone i = new DeletaSmartphone();
+        i.apagaSmart(argv);
     }
 
-    private InterfaceServidorBD bd; // A interface para o objecto remoto
+    private InterfaceServidorSmartphone bds; // A interface para o objecto remoto
 }

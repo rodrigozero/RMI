@@ -8,15 +8,14 @@ import java.rmi.*;
  *
  * @author rodri
  */
-
-public class SeleccionaTuplo{
-    public SeleccionaTuplo()
+public class DeletaNotebook{
+    public DeletaNotebook()
     {
         System.out.println("Arrancando o Cliente...");
         // Vamos tentar aceder ao Servidor de Registos para recolher a interface
         try
         {
-            bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/ServidorBD_1");
+            bdn = (InterfaceServidorNotebook) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
@@ -25,12 +24,13 @@ public class SeleccionaTuplo{
             System.exit(0);
         }
     }    
-    public void selecciona (String[] argv)
+    public void apagaNote(String[] argv)
     {
         try
         {
             int id = Integer.parseInt(argv[0]);
-            System.out.println(bd.selecciona(id).desc());
+            bdn.apagaNote(id);
+            System.out.println("Notebook deletado com ID: "+id);
         }
         catch (Exception e)
         {
@@ -43,12 +43,13 @@ public class SeleccionaTuplo{
     {
         if (argv.length!=1)
         {
-            System.out.println("Sintaxe:\n\tjava SeleccionaTuplo \"id\"");
+            System.out.println("Sintaxe:\n\tjava DeletaSmarphone \"id\"");
             System.exit(0);
         }
-        SeleccionaTuplo i = new SeleccionaTuplo();
-        i.selecciona(argv);
+        DeletaNotebook i = new DeletaNotebook();
+        i.apagaNote(argv);
     }
 
-    private InterfaceServidorBD bd; // A interface para o objecto remoto
+    private InterfaceServidorNotebook bdn; // A interface para o objecto remoto
 }
+
