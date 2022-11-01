@@ -64,12 +64,5 @@ public String desc()
     {
         return "["+mID+"]\t"+marca+"\t"+modelo+"\t"+memoria+"\t"+cor;
     }
-public static void main (String args[]){
-try{
-        InterfaceServidorBD bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/ServidorBD_1");
-}
-catch (Exception e){
-}
 
-}
 }

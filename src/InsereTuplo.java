@@ -9,8 +9,7 @@ import java.rmi.*;
  * @author rodri
  */
 
-public class InsereTuplo
-{
+public class InsereTuplo{
     public InsereTuplo()
     {
         System.out.println("Arrancando o Cliente...");
