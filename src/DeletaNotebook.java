@@ -11,7 +11,7 @@ import java.rmi.*;
 public class DeletaNotebook{
     public DeletaNotebook()
     {
-        System.out.println("Arrancando o Cliente...");
+        System.out.println("Carregando...");
         // Vamos tentar aceder ao Servidor de Registos para recolher a interface
         try
         {
@@ -19,7 +19,7 @@ public class DeletaNotebook{
         }
         catch (Exception e)
         {
-            System.out.println("Falhou o arranque do Cliente.\n"+e);
+            System.out.println("Falhou.\n"+e);
 	    System.out.println("Certifique-se que tanto o Servidor de Registos como a Aplicação Servidora estão a correr correctamente.\n");
             System.exit(0);
         }
@@ -43,7 +43,7 @@ public class DeletaNotebook{
     {
         if (argv.length!=1)
         {
-            System.out.println("Sintaxe:\n\tjava DeletaSmarphone \"id\"");
+            System.out.println("Sintaxe:\n\tjava DeletaNotebook \"id\"");
             System.exit(0);
         }
         DeletaNotebook i = new DeletaNotebook();

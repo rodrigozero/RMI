@@ -12,7 +12,7 @@ import java.util.Vector;
 public class ListaNotebook{
     public ListaNotebook()
     {
-        System.out.println("Arrancando o Cliente...");
+        System.out.println("Carregando...");
         // Vamos tentar ir aceder ao Servidor de Registos para recolher a interface
         try
         {

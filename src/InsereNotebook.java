@@ -29,7 +29,7 @@ public class InsereNotebook{
         try
         {
             int id = bdn.insereNote(argv[0], argv[1], argv[2], argv[3]);
-            System.out.println("Inserido novo tuplo com ID: "+id);
+            System.out.println("Inserido novo Notebook com ID: "+id);
         }
         catch (Exception e)
         {

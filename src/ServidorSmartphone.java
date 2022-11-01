@@ -21,7 +21,7 @@ public class ServidorSmartphone extends UnicastRemoteObject implements Interface
     {
     	Smartphone s = new Smartphone(marca, modelo, memoria, cor);
    	smarts.add(s);
-	System.out.println("Inserido novo tuplo com ID: "+s.ID());
+	System.out.println("Inserido novo smartphone com ID: "+s.ID());
 	return s.ID();
     }
     public Vector listaSmart() throws RemoteException

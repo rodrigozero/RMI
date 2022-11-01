@@ -14,7 +14,7 @@ public class ListaSmartphone
 {
     public ListaSmartphone()
     {
-        System.out.println("Arrancando o Cliente...");
+        System.out.println("Carregando...");
         // Vamos tentar ir aceder ao Servidor de Registos para recolher a interface
         try
         {
@@ -22,7 +22,7 @@ public class ListaSmartphone
         }
         catch (Exception e)
         {
-            System.out.println("Falhou o arranque do Cliente.\n"+e);
+            System.out.println("Falhou.\n"+e);
             System.out.println("Certifique-se que tanto o Servidor de Registos como a Aplicação Servidora estão a correr correctamente.\n");                
             System.exit(0);
         }
