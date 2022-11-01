@@ -19,7 +19,7 @@ public class IniciaServidorN
         }
         catch (Exception e)
         {
-            System.out.println("Ocorreu um problema no arranque do servidor.\n"+e.toString());
+            System.out.println("Ocorreu um problema ao carregar o servidor.\n"+e.toString());
         }
     }
 }
