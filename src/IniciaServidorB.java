@@ -15,7 +15,7 @@ public class IniciaServidorB
         try
         {
             System.out.println("Servidor On...");
-            Naming.rebind("ServidorBD_B", new ServidorNotebook());
+            Naming.rebind("ServidorBD_b", new ServidorBicicleta());
         }
         catch (Exception e)
         {
