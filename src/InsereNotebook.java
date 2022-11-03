@@ -11,11 +11,10 @@ import java.rmi.*;
 public class InsereNotebook{
     public InsereNotebook()
     {
-        System.out.println("Arrancando o Cliente...");
-        // Vamos tentar aceder ao Servidor de Registos para recolher a interface
+        System.out.println("Buscando...");
         try
         {
-            bdn = (InterfaceServidorNotebook) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
+            bdn = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
@@ -28,7 +27,7 @@ public class InsereNotebook{
     {
         try
         {
-            int id = bdn.insereNote(argv[0], argv[1], argv[2], argv[3]);
+            int id = bdn.inserir(argv[0], argv[1], argv[2], argv[3]);
             System.out.println("Inserido novo Notebook com ID: "+id);
         }
         catch (Exception e)
@@ -49,5 +48,5 @@ public class InsereNotebook{
         i.insereNote(argv);
     }
 
-    private InterfaceServidorNotebook bdn; // A interface para o objecto remoto
+    private InterfaceServidor bdn; 
 }

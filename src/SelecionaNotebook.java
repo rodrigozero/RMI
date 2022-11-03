@@ -15,7 +15,7 @@ public class SelecionaNotebook{
         // Vamos tentar aceder ao Servidor de Registos para recolher a interface
         try
         {
-            bdn = (InterfaceServidorNotebook) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
+            bdn = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
@@ -29,7 +29,8 @@ public class SelecionaNotebook{
         try
         {
             int id = Integer.parseInt(argv[0]);
-            System.out.println(bdn.selecionaNote(id).desc());
+            Notebook not = (Notebook) bdn.seleciona(id);
+            System.out.println(not.desc());
         }
         catch (Exception e)
         {
@@ -49,5 +50,5 @@ public class SelecionaNotebook{
         i.selecionaNote(argv);
     }
 
-    private InterfaceServidorNotebook bdn; // A interface para o objecto remoto
+    private InterfaceServidor bdn; // A interface para o objecto remoto
 }

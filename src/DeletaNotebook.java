@@ -12,10 +12,10 @@ public class DeletaNotebook{
     public DeletaNotebook()
     {
         System.out.println("Carregando...");
-        // Vamos tentar aceder ao Servidor de Registos para recolher a interface
+        
         try
         {
-            bdn = (InterfaceServidorNotebook) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
+            bdn = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
@@ -24,12 +24,12 @@ public class DeletaNotebook{
             System.exit(0);
         }
     }    
-    public void apagaNote(String[] argv)
+    public void apaga(String[] argv)
     {
         try
         {
             int id = Integer.parseInt(argv[0]);
-            bdn.apagaNote(id);
+            bdn.apaga(id);
             System.out.println("Notebook deletado com ID: "+id);
         }
         catch (Exception e)
@@ -47,9 +47,9 @@ public class DeletaNotebook{
             System.exit(0);
         }
         DeletaNotebook i = new DeletaNotebook();
-        i.apagaNote(argv);
+        i.apaga(argv);
     }
 
-    private InterfaceServidorNotebook bdn; // A interface para o objecto remoto
+    private InterfaceServidor bdn;
 }
 

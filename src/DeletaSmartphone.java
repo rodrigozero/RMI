@@ -13,10 +13,10 @@ public class DeletaSmartphone{
     public DeletaSmartphone()
     {
         System.out.println("Carregando...");
-        // Vamos tentar aceder ao Servidor de Registos para recolher a interface
+       
         try
         {
-            bds = (InterfaceServidorSmartphone) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
+            bds = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
         }
         catch (Exception e)
         {
@@ -25,12 +25,12 @@ public class DeletaSmartphone{
             System.exit(0);
         }
     }    
-    public void apagaSmart (String[] argv)
+    public void apaga(String[] argv)
     {
         try
         {
             int id = Integer.parseInt(argv[0]);
-            bds.apagaSmart(id);
+            bds.apaga(id);
             System.out.println("Smartphone deletado com ID: "+id);
         }
         catch (Exception e)
@@ -48,8 +48,8 @@ public class DeletaSmartphone{
             System.exit(0);
         }
         DeletaSmartphone i = new DeletaSmartphone();
-        i.apagaSmart(argv);
+        i.apaga(argv);
     }
 
-    private InterfaceServidorSmartphone bds; // A interface para o objecto remoto
+    private InterfaceServidor bds; 
 }

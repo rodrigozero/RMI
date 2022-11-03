@@ -15,10 +15,10 @@ public class ListaSmartphone
     public ListaSmartphone()
     {
         System.out.println("Carregando...");
-        // Vamos tentar ir aceder ao Servidor de Registos para recolher a interface
+       
         try
         {
-            bds = (InterfaceServidorSmartphone) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
+            bds = (InterfaceServidor) Naming.lookup("rmi://192.168.100.20/ServidorBD_s");
         }
         catch (Exception e)
         {
@@ -27,11 +27,11 @@ public class ListaSmartphone
             System.exit(0);
         }
     }    
-    public void listaSmart ()
+    public void lista()
     {
         try
         {
-            Vector itens = bds.listaSmart();
+            Vector itens = bds.lista();
             System.out.println("Smartphones Existentes na Base de Dados: "+itens.size());
             for (int j=0; j < itens.size(); j++)
             {
@@ -49,8 +49,8 @@ public class ListaSmartphone
     public static void main (String[] argv)
     {
         ListaSmartphone l = new ListaSmartphone();
-        l.listaSmart();
+        l.lista();
     }
 
-    private InterfaceServidorSmartphone bds; // A interface para o objecto remoto
+    private InterfaceServidor bds; 
 }

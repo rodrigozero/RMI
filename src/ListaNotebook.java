@@ -16,7 +16,7 @@ public class ListaNotebook{
         // Vamos tentar ir aceder ao Servidor de Registos para recolher a interface
         try
         {
-            bdn = (InterfaceServidorNotebook) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
+            bdn = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
@@ -25,10 +25,10 @@ public class ListaNotebook{
             System.exit(0);
         }
     }    
-    public void listaNote(){
+    public void lista(){
         try
         {
-            Vector itens = bdn.listaNote();
+            Vector itens = bdn.lista();
             System.out.println("Notebooks Existentes na Base de Dados: "+itens.size());
             for (int j=0; j < itens.size(); j++)
             {
@@ -46,9 +46,9 @@ public class ListaNotebook{
     public static void main (String[] argv)
     {
         ListaNotebook l = new ListaNotebook();
-        l.listaNote();
+        l.lista();
     }
 
-    private InterfaceServidorNotebook bdn; // A interface para o objecto remoto
+    private InterfaceServidor bdn; // A interface para o objecto remoto
 }
 

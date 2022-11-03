@@ -10,25 +10,25 @@ import java.util.Vector;
  *
  * @author rodri
  */
-public class ServidorNotebook extends UnicastRemoteObject implements InterfaceServidorNotebook
+public class ServidorNotebook extends UnicastRemoteObject implements InterfaceServidor
 {
     public ServidorNotebook() throws RemoteException
     {
         System.out.println("Novo Servidor notebook instanciado...");
     	notes = new Vector();
     }
-    public int insereNote(String marca, String modelo, String memoria, String cor) throws RemoteException
+    public int inserir(String marca, String modelo, String memoria, String cor) throws RemoteException
     {
     	Notebook n = new Notebook(marca, modelo, memoria, cor);
    	notes.add(n);
 	System.out.println("Inserido novo Notebook com ID: "+n.ID());
 	return n.ID();
     }
-    public Vector listaNote() throws RemoteException
+    public Vector lista() throws RemoteException
     {
     	return notes;
     }
-    public Notebook selecionaNote(int id) throws RemoteException
+    public Notebook seleciona(int id) throws RemoteException
     {
     	for (int j=0; j < notes.size(); j++)
     	{
@@ -37,7 +37,7 @@ public class ServidorNotebook extends UnicastRemoteObject implements InterfaceSe
     	}
     	return (Notebook) null;
     }
-    public int apagaNote(int id) throws RemoteException
+    public int apaga(int id) throws RemoteException
     {
     	for (int j=0; j < notes.size(); j++)
     	{

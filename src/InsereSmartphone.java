@@ -13,10 +13,9 @@ public class InsereSmartphone{
     public InsereSmartphone()
     {
         System.out.println("Carregando...");
-        // Vamos tentar aceder ao Servidor de Registos para recolher a interface
         try
         {
-            bds = (InterfaceServidorSmartphone) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
+            bds = (InterfaceServidor) Naming.lookup("rmi://192.168.100.20/ServidorBD_n");
         }
         catch (Exception e)
         {
@@ -25,11 +24,11 @@ public class InsereSmartphone{
             System.exit(0);
         }
     }    
-    public void insereSmart (String[] argv)
+    public void inserir(String[] argv)
     {
         try
         {
-            int id = bds.insereSmart(argv[0], argv[1], argv[2], argv[3]);
+            int id = bds.inserir(argv[0], argv[1], argv[2], argv[3]);
             System.out.println("Inserido novo smartphone com ID: "+id);
         }
         catch (Exception e)
@@ -47,8 +46,8 @@ public class InsereSmartphone{
             System.exit(0);
         }
         InsereSmartphone i = new InsereSmartphone();
-        i.insereSmart(argv);
+        i.inserir(argv);
     }
 
-    private InterfaceServidorSmartphone bds; // A interface para o objecto remoto
+    private InterfaceServidor bds; 
 }
