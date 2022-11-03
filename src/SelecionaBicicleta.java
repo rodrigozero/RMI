@@ -8,19 +8,18 @@ import java.rmi.*;
  *
  * @author rodri
  */
-
-public class SelecionaSmartphone{
-    public SelecionaSmartphone()
+public class SelecionaBicicleta{
+    public SelecionaBicicleta()
     {
         System.out.println("Carregando...");
-   
+        
         try
         {
-            bds = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
+            bdb = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_b");
         }
         catch (Exception e)
         {
-            System.out.println("Falhou.\n"+e);
+            System.out.println("Falhou .\n"+e);
 	    System.out.println("Certifique-se que tanto o Servidor de Registos como a Aplicação Servidora estão a correr correctamente.\n");
             System.exit(0);
         }
@@ -30,8 +29,8 @@ public class SelecionaSmartphone{
         try
         {
             int id = Integer.parseInt(argv[0]);
-            Smartphone sma = (Smartphone) bds.seleciona(id);
-            System.out.println(sma.desc());
+            Notebook not = (Notebook) bdb.seleciona(id);
+            System.out.println(not.desc());
         }
         catch (Exception e)
         {
@@ -47,9 +46,9 @@ public class SelecionaSmartphone{
             System.out.println("Qual o ID do Objeto a ser Selecionado?");
             System.exit(0);
         }
-        SelecionaSmartphone i = new SelecionaSmartphone();
+        SelecionaBicicleta i = new SelecionaBicicleta();
         i.seleciona(argv);
     }
 
-    private InterfaceServidor bds;
+    private InterfaceServidor bdb;
 }

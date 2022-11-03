@@ -8,15 +8,14 @@ import java.rmi.*;
  *
  * @author rodri
  */
-
-public class SelecionaSmartphone{
-    public SelecionaSmartphone()
+public class DeletaBicicleta{
+    public DeletaBicicleta()
     {
         System.out.println("Carregando...");
-   
+        
         try
         {
-            bds = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
+            bdb = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_b");
         }
         catch (Exception e)
         {
@@ -25,13 +24,13 @@ public class SelecionaSmartphone{
             System.exit(0);
         }
     }    
-    public void seleciona(String[] argv)
+    public void apaga(String[] argv)
     {
         try
         {
             int id = Integer.parseInt(argv[0]);
-            Smartphone sma = (Smartphone) bds.seleciona(id);
-            System.out.println(sma.desc());
+            bdb.apaga(id);
+            System.out.println("Bicileta Deletada com ID: "+id);
         }
         catch (Exception e)
         {
@@ -44,12 +43,14 @@ public class SelecionaSmartphone{
     {
         if (argv.length!=1)
         {
-            System.out.println("Qual o ID do Objeto a ser Selecionado?");
+            System.out.println("Qual ID do Objeto a ser Deletado?");
             System.exit(0);
         }
-        SelecionaSmartphone i = new SelecionaSmartphone();
-        i.seleciona(argv);
+        DeletaBicicleta i = new DeletaBicicleta();
+        i.apaga(argv);
     }
 
-    private InterfaceServidor bds;
+    private InterfaceServidor bdb;
 }
+
+

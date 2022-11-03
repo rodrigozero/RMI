@@ -30,7 +30,7 @@ public class DeletaNotebook{
         {
             int id = Integer.parseInt(argv[0]);
             bdn.apaga(id);
-            System.out.println("Notebook deletado com ID: "+id);
+            System.out.println("Notebook Deletado com ID: "+id);
         }
         catch (Exception e)
         {
@@ -43,7 +43,7 @@ public class DeletaNotebook{
     {
         if (argv.length!=1)
         {
-            System.out.println("Sintaxe:\n\tjava DeletaNotebook \"id\"");
+            System.out.println("Qual ID do Objeto a ser Deletado?");
             System.exit(0);
         }
         DeletaNotebook i = new DeletaNotebook();

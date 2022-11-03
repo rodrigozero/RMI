@@ -31,7 +31,7 @@ public class DeletaSmartphone{
         {
             int id = Integer.parseInt(argv[0]);
             bds.apaga(id);
-            System.out.println("Smartphone deletado com ID: "+id);
+            System.out.println("Smartphone Deletado com ID: "+id);
         }
         catch (Exception e)
         {
@@ -44,7 +44,7 @@ public class DeletaSmartphone{
     {
         if (argv.length!=1)
         {
-            System.out.println("Sintaxe:\n\tjava DeletaSmarphone \"id\"");
+            System.out.println("Qual ID do Objeto a ser Deletado?");
             System.exit(0);
         }
         DeletaSmartphone i = new DeletaSmartphone();

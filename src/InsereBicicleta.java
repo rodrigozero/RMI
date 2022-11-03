@@ -8,15 +8,13 @@ import java.rmi.*;
  *
  * @author rodri
  */
-
-public class SelecionaSmartphone{
-    public SelecionaSmartphone()
+public class InsereBicicleta{
+    public InsereBicicleta()
     {
         System.out.println("Carregando...");
-   
         try
         {
-            bds = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
+            bdb = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_b");
         }
         catch (Exception e)
         {
@@ -25,13 +23,12 @@ public class SelecionaSmartphone{
             System.exit(0);
         }
     }    
-    public void seleciona(String[] argv)
+    public void inserir(String[] argv)
     {
         try
         {
-            int id = Integer.parseInt(argv[0]);
-            Smartphone sma = (Smartphone) bds.seleciona(id);
-            System.out.println(sma.desc());
+            int id = bdb.inserir(argv[0], argv[1], argv[2], Float.parseFloat(argv[3]));
+            System.out.println("Nova Bicicleta Inserida com ID: "+id);
         }
         catch (Exception e)
         {
@@ -42,14 +39,16 @@ public class SelecionaSmartphone{
  
     public static void main (String[] argv)
     {
-        if (argv.length!=1)
+        if (argv.length!=4)
         {
-            System.out.println("Qual o ID do Objeto a ser Selecionado?");
+            System.out.println("Digite as informações: \"Marca\" \"Modelo\" \"Cor\" \"Preco\"");
             System.exit(0);
         }
-        SelecionaSmartphone i = new SelecionaSmartphone();
-        i.seleciona(argv);
+        InsereBicicleta i = new InsereBicicleta();
+        i.inserir(argv);
     }
 
-    private InterfaceServidor bds;
+    private InterfaceServidor bdb; 
 }
+
+

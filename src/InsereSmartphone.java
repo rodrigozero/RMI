@@ -15,7 +15,7 @@ public class InsereSmartphone{
         System.out.println("Carregando...");
         try
         {
-            bds = (InterfaceServidor) Naming.lookup("rmi://192.168.100.20/ServidorBD_n");
+            bds = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
         }
         catch (Exception e)
         {
@@ -28,8 +28,8 @@ public class InsereSmartphone{
     {
         try
         {
-            int id = bds.inserir(argv[0], argv[1], argv[2], argv[3]);
-            System.out.println("Inserido novo smartphone com ID: "+id);
+            int id = bds.inserir(argv[0], argv[1], argv[2], Float.parseFloat(argv[3]));
+            System.out.println("Inserido novo Smartphone com ID: "+id);
         }
         catch (Exception e)
         {
@@ -42,7 +42,7 @@ public class InsereSmartphone{
     {
         if (argv.length!=4)
         {
-            System.out.println("Sintaxe:\n\tjava InsereTuplo \"Marca\" \"Modelo\" \"Memoria\" \"Cor\"");
+            System.out.println("Digite as informações: \"Marca\" \"Modelo\" \"Cor\" \"Preco\"");
             System.exit(0);
         }
         InsereSmartphone i = new InsereSmartphone();

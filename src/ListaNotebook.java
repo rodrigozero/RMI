@@ -13,14 +13,13 @@ public class ListaNotebook{
     public ListaNotebook()
     {
         System.out.println("Carregando...");
-        // Vamos tentar ir aceder ao Servidor de Registos para recolher a interface
         try
         {
             bdn = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
-            System.out.println("Falhou o arranque do Cliente.\n"+e);
+            System.out.println("Falhou.\n"+e);
             System.out.println("Certifique-se que tanto o Servidor de Registos como a Aplicação Servidora estão a correr correctamente.\n");                
             System.exit(0);
         }
@@ -29,7 +28,7 @@ public class ListaNotebook{
         try
         {
             Vector itens = bdn.lista();
-            System.out.println("Notebooks Existentes na Base de Dados: "+itens.size());
+            System.out.println("Quantidade de Notebooks Existentes na Base de Dados: "+itens.size());
             for (int j=0; j < itens.size(); j++)
             {
                 Notebook n = (Notebook) itens.get(j);
@@ -49,6 +48,6 @@ public class ListaNotebook{
         l.lista();
     }
 
-    private InterfaceServidor bdn; // A interface para o objecto remoto
+    private InterfaceServidor bdn;
 }
 

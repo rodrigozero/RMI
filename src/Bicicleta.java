@@ -8,7 +8,7 @@ import java.rmi.Naming;
  *
  * @author rodri
  */
-public class Smartphone implements java.io.Serializable{
+public class Bicicleta implements java.io.Serializable{
     private String marca;
     private String modelo;
     private String cor;
@@ -16,7 +16,7 @@ public class Smartphone implements java.io.Serializable{
     private static int gID=0;
     private int mID=0;
     
-public Smartphone(String marca, String modelo, String cor, float preco){
+public Bicicleta(String marca, String modelo, String cor, float preco){
     this.marca = marca;
     this.modelo = modelo;
     this.cor = cor;

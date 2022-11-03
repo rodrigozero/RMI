@@ -14,19 +14,21 @@ public class ServidorSmartphone extends UnicastRemoteObject implements Interface
 {
     public ServidorSmartphone() throws RemoteException
     {
-        System.out.println("Novo Servidor Smartphone instanciado...");
+        System.out.println("Servidor Smartphone instanciado...");
     	smarts = new Vector();
     }
-    public int inserir(String marca, String modelo, String memoria, String cor) throws RemoteException
+    public int inserir(String marca, String modelo, String cor, float preco) throws RemoteException
     {
-    	Smartphone s = new Smartphone(marca, modelo, memoria, cor);
+    	Smartphone s = new Smartphone(marca, modelo, cor, preco);
    	smarts.add(s);
-	System.out.println("Inserido novo smartphone com ID: "+s.ID());
+	System.out.println("Novo Smartphone Inserido com ID: "+s.ID());
 	return s.ID();
     }
     public Vector lista() throws RemoteException
     {
-    	return smarts;
+    	System.out.println("O Cliente Listou Todos os Objetos ");
+        return smarts;
+        
     }
     
     public Smartphone seleciona(int id) throws RemoteException
@@ -34,7 +36,9 @@ public class ServidorSmartphone extends UnicastRemoteObject implements Interface
     	for (int j=0; j < smarts.size(); j++)
     	{
         	Smartphone s = (Smartphone) smarts.get(j);
-        	if (s.temID(id)) return s; 
+        	if (s.temID(id)) 
+                    System.out.println("Objeto Selecionado pelo Cliente com ID: "+s.ID());
+                    return s; 
     	}
     	return (Smartphone) null;
     }
@@ -46,6 +50,7 @@ public class ServidorSmartphone extends UnicastRemoteObject implements Interface
         	if (s.temID(id)) 
         	{
             		smarts.remove(j);
+                        System.out.println("Smartphone Deletado com ID: "+s.ID());
             		return 1;
         	}
     	}

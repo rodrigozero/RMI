@@ -12,7 +12,7 @@ public class SelecionaNotebook{
     public SelecionaNotebook()
     {
         System.out.println("Carregando...");
-        // Vamos tentar aceder ao Servidor de Registos para recolher a interface
+        
         try
         {
             bdn = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
@@ -24,7 +24,7 @@ public class SelecionaNotebook{
             System.exit(0);
         }
     }    
-    public void selecionaNote (String[] argv)
+    public void seleciona(String[] argv)
     {
         try
         {
@@ -43,12 +43,12 @@ public class SelecionaNotebook{
     {
         if (argv.length!=1)
         {
-            System.out.println("Sintaxe:\n\tjava SelecionaNotebook \"id\"");
+            System.out.println("Qual o ID do Objeto a ser Selecionado?");
             System.exit(0);
         }
         SelecionaNotebook i = new SelecionaNotebook();
-        i.selecionaNote(argv);
+        i.seleciona(argv);
     }
 
-    private InterfaceServidor bdn; // A interface para o objecto remoto
+    private InterfaceServidor bdn;
 }

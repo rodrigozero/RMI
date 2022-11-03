@@ -9,16 +9,13 @@ import java.util.Vector;
  *
  * @author rodri
  */
-
-public class ListaSmartphone
-{
-    public ListaSmartphone()
+public class ListaBicicleta{
+    public ListaBicicleta()
     {
         System.out.println("Carregando...");
-       
         try
         {
-            bds = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_s");
+            bdb = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_b");
         }
         catch (Exception e)
         {
@@ -27,16 +24,15 @@ public class ListaSmartphone
             System.exit(0);
         }
     }    
-    public void lista()
-    {
+    public void lista(){
         try
         {
-            Vector itens = bds.lista();
-            System.out.println("Quantidade de Smartphones Existentes na Base de Dados: "+itens.size());
+            Vector itens = bdb.lista();
+            System.out.println("Quantidade de Bicicletas Existentes na Base de Dados: "+itens.size());
             for (int j=0; j < itens.size(); j++)
             {
-                Smartphone s = (Smartphone) itens.get(j);
-                System.out.println(s.desc());
+                Notebook n = (Notebook) itens.get(j);
+                System.out.println(n.desc());
             }
         }
         catch (Exception e)
@@ -48,9 +44,11 @@ public class ListaSmartphone
 
     public static void main (String[] argv)
     {
-        ListaSmartphone l = new ListaSmartphone();
+        ListaBicicleta l = new ListaBicicleta();
         l.lista();
     }
 
-    private InterfaceServidor bds; 
+    private InterfaceServidor bdb;
 }
+
+

@@ -14,27 +14,31 @@ public class ServidorNotebook extends UnicastRemoteObject implements InterfaceSe
 {
     public ServidorNotebook() throws RemoteException
     {
-        System.out.println("Novo Servidor notebook instanciado...");
+        System.out.println("Servidor Notebook instanciado...");
     	notes = new Vector();
     }
-    public int inserir(String marca, String modelo, String memoria, String cor) throws RemoteException
+    public int inserir(String marca, String modelo, String cor, float preco) throws RemoteException
     {
-    	Notebook n = new Notebook(marca, modelo, memoria, cor);
+    	Notebook n = new Notebook(marca, modelo, cor, preco);
    	notes.add(n);
-	System.out.println("Inserido novo Notebook com ID: "+n.ID());
+	System.out.println("Novo Notebook Inserido com ID: "+n.ID());
 	return n.ID();
     }
     public Vector lista() throws RemoteException
     {
-    	return notes;
+    	System.out.println("O Cliente Listou Todos os Objetos ");
+        return notes;
     }
     public Notebook seleciona(int id) throws RemoteException
     {
     	for (int j=0; j < notes.size(); j++)
     	{
         	Notebook n = (Notebook) notes.get(j);
-        	if (n.temID(id)) return n; 
+        	if (n.temID(id))
+                    System.out.println("Objeto Selecionado pelo Cliente com ID: "+n.ID());
+                    return n;
     	}
+        
     	return (Notebook) null;
     }
     public int apaga(int id) throws RemoteException
@@ -45,6 +49,7 @@ public class ServidorNotebook extends UnicastRemoteObject implements InterfaceSe
         	if (n.temID(id)) 
         	{
             		notes.remove(j);
+                        System.out.println("Notebook Deletado com ID: "+n.ID());
             		return 1;
         	}
     	}

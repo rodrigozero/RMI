@@ -11,17 +11,16 @@ import java.rmi.Naming;
 public class Notebook implements java.io.Serializable{
     private String marca;
     private String modelo;
-    private String memoria;
     private String cor;
+    private float preco;
     private static int gID=0;
     private int mID=0;
     
-public Notebook(String marca, String modelo, String memoria, String cor){
+public Notebook(String marca, String modelo,String cor, float preco){
     this.marca = marca;
     this.modelo = modelo;
-    this.memoria = memoria;
     this.cor = cor;
-    //this.mID = mID;
+    this.preco = preco;
     marcaID();
 }/*
 public String getMarca(){
@@ -62,7 +61,7 @@ public int ID()
 }
 public String desc()
     {
-        return "["+mID+"]\t"+marca+"\t"+modelo+"\t"+memoria+"\t"+cor;
+        return "["+mID+"]\t"+marca+"\t"+modelo+""+cor+"\t"+preco;
     }
 
 }

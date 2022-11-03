@@ -11,24 +11,24 @@ import java.rmi.*;
 public class InsereNotebook{
     public InsereNotebook()
     {
-        System.out.println("Buscando...");
+        System.out.println("Carregando...");
         try
         {
             bdn = (InterfaceServidor) Naming.lookup("rmi://127.0.0.1/ServidorBD_n");
         }
         catch (Exception e)
         {
-            System.out.println("Falhou o arranque do Cliente.\n"+e);
+            System.out.println("Falhou.\n"+e);
 	    System.out.println("Certifique-se que tanto o Servidor de Registos como a Aplicação Servidora estão a correr correctamente.\n");
             System.exit(0);
         }
     }    
-    public void insereNote (String[] argv)
+    public void inserir(String[] argv)
     {
         try
         {
-            int id = bdn.inserir(argv[0], argv[1], argv[2], argv[3]);
-            System.out.println("Inserido novo Notebook com ID: "+id);
+            int id = bdn.inserir(argv[0], argv[1], argv[2], Float.parseFloat(argv[3]));
+            System.out.println("Novo Notebook Inserido com ID: "+id);
         }
         catch (Exception e)
         {
@@ -41,11 +41,11 @@ public class InsereNotebook{
     {
         if (argv.length!=4)
         {
-            System.out.println("Sintaxe:\n\tjava InsereNote \"Marca\" \"Modelo\" \"Memoria\" \"Cor\"");
+            System.out.println("Digite as informações: \"Marca\" \"Modelo\" \"Cor\" \"Preco\"");
             System.exit(0);
         }
         InsereNotebook i = new InsereNotebook();
-        i.insereNote(argv);
+        i.inserir(argv);
     }
 
     private InterfaceServidor bdn; 
