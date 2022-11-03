@@ -14,4 +14,5 @@ import java.util.Vector;
     public Notebook selecionaNote(int id) throws RemoteException;
     public Vector listaNote() throws RemoteException;
     public int apagaNote(int id) throws RemoteException;
+   
     }
